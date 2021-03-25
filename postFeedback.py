@@ -9,7 +9,6 @@ url = "http://35.223.192.123/feedback/"
 fullFeedback = {}
 key = ["title", "name", "date", "feedback"]
 
-
 for file in os.listdir(directory) :
   with open (dir+"/"+file, 'r') as text :
     i = 0
