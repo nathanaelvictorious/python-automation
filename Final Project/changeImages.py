@@ -3,15 +3,19 @@
 import os
 from PIL import Image
 
-path = os.getcwd()
-images = os.listdir(path)
+dir = "supplier-data/images/"
+images = os.listdir(dir)
 
 for file in images :
-  im = Image.open(file).convert('RGB')
+  path, filename = os.path.split(file)
 
-  name, ext = os.path.split(file)
-  name = os.path.splitext(ext)[0]
+  if  (filename != "LICENSE" and filename != "README") :
+    name, ext = filename.split('.')
+    im = Image.open(dir+"/"+file).convert('RGB')
 
-  im.rotate(90).resize((128,128)).save('/opt/icons/{}.jpeg'.format(name))
+    im.resize((600,400)).save('supplier-data/images/{}.jpeg'.format(name))
 
-print("Succeed")
+  else :
+    continue
+    
+print("Image Updated")
